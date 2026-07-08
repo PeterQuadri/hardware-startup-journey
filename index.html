@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hardware Trail — The Founder Journey</title>
+<title>Hardware Trail: The Founder Journey</title>
 <style>
   :root {
     --bg0: #0a0d1c;
@@ -346,7 +346,7 @@
 <!-- ============ START SCREEN ============ -->
 <div id="startScreen" class="screen card">
   <div class="title">Hardware Trail</div>
-  <p class="subtitle">The founder journey — prototype to production to exit, or bust.
+  <p class="subtitle">The founder journey: prototype to production to exit, or bust.
   You have <strong style="color:var(--gold)">$120,000</strong>, a cofounder who knows electronics,
   and a market window that won't stay open forever. Most hardware startups die between prototype
   and production. Let's see how far you get.</p>
@@ -360,7 +360,7 @@
   <input id="coName" type="text" maxlength="24" placeholder="LUMEN LABS" autocomplete="off">
 
   <h2>Choose your pack weight</h2>
-  <p class="note">How rich is the product? Heavier packs carry more — and slow you down.</p>
+  <p class="note">How rich is the product? Heavier packs carry more, and slow you down.</p>
   <div class="packs">
     <div class="pack" data-pack="lean">
       <div class="pk-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg></div>
@@ -403,7 +403,7 @@
 
   <div class="topbar card">
     <div class="brand">
-      <span class="co" id="hudCompany">—</span>
+      <span class="co" id="hudCompany"></span>
       <span class="chip" id="hudPack">Standard pack</span>
     </div>
     <div style="display:flex; gap:7px; flex-wrap:wrap;">
@@ -506,7 +506,7 @@ const ACTIONS = [
   { id: "sell",    name: "Sell",     color: "var(--green)",  desc: "Pre-orders, traction, retail" },
   { id: "fund",    name: "Fundraise",color: "var(--violet)", desc: "Warm up investors" },
   { id: "factory", name: "Factory",  color: "var(--blue)",   desc: "Yield & delay risk" },
-  { id: "rest",    name: "Rest",     color: "var(--gold)",   desc: "Zero day — sanity & morale" },
+  { id: "rest",    name: "Rest",     color: "var(--gold)",   desc: "Zero day for sanity & morale" },
 ];
 
 const RIVAL_NAMES = [
@@ -593,7 +593,7 @@ const EVENTS = [
     text:"A buyer saw the product at a friend's place and wants to talk shelf space.",
     fx:s=>{ s.traction=Math.min(100,s.traction+8); s.stageProgress+=10; return "+8 traction · +10 progress"; } },
   { t:"magic", w:2, stages:[3,5], title:"Trail magic: factory favor",
-    text:"Your factory contact bumps your run up the queue. No charge — this time.",
+    text:"Your factory contact bumps your run up the queue. No charge, this time.",
     fx:s=>{ s.stageProgress+=15; s.factoryRelation+=8; return "+15 progress · factory relationship warms"; } },
   { t:"magic", w:2, stages:[1,2], title:"Trail magic: angel check",
     text:"A friend-of-a-friend angel wires $25,000 on a handshake SAFE.",
@@ -602,10 +602,10 @@ const EVENTS = [
     text:"The crowdfunding campaign blows past its goal. Strangers believe in this thing.",
     fx:s=>{ s.cash+=20000; s.preorders+=100; s.morale+=8; return "+$20,000 · +100 pre-orders · +8 morale"; } },
   { t:"magic", w:2, stages:[2,3,4,5], title:"Trail magic: discounted components",
-    text:"A supplier offers first look at excess stock — the exact part you need, 40% off.",
+    text:"A supplier offers first look at excess stock: the exact part you need, 40% off.",
     fx:s=>{ s.cash+=6000; return "+$6,000 effective savings"; } },
   { t:"magic", w:1, stages:[1,2], title:"Trail magic: accelerator acceptance",
-    text:"A hardware accelerator wants you in the next batch — cash, credibility, and factory intros.",
+    text:"A hardware accelerator wants you in the next batch: cash, credibility, and factory intros.",
     fx:s=>{ s.cash+=30000; s.equity-=3; s.factoryRelation+=15; s.morale+=8; return "+$30,000 for 3% · factory +15 · +8 morale"; } },
   { t:"magic", w:1, stages:[1,2,3], title:"Trail magic: talent walks in",
     text:"An engineer from a folded hardware startup wants to join for mostly equity.",
@@ -613,7 +613,7 @@ const EVENTS = [
 
   { t:"grind", w:4, stages:[0,1,2,3,4,5], title:"A slow week",
     text:"No news. No drama. Just the trail and the to-do list.",
-    fx:s=>{ s.sanity-=2; return "−2 sanity — the slog is real"; } },
+    fx:s=>{ s.sanity-=2; return "−2 sanity. The slog is real"; } },
   { t:"grind", w:3, stages:[1,2,3,4,5], title:"Firmware bug found late",
     text:"A timing bug that only shows up after 40 minutes of runtime. Of course.",
     fx:s=>{ s.stageProgress=Math.max(0,s.stageProgress-5); return "−5 progress"; } },
@@ -650,21 +650,21 @@ const EVENTS = [
 
 const DECISIONS = [
   { id:"tooling", stage:3, kicker:"River Crossing", title:"The Tooling Commit",
-    text:"The factory needs a decision. A full tooling run gets your unit cost down and volume up — but it's a huge check, and if the design changes, that steel is sunk. A pilot batch is safe but slow and pricey per-unit.",
+    text:"The factory needs a decision. A full tooling run gets your unit cost down and volume up, but it's a huge check, and if the design changes, that steel is sunk. A pilot batch is safe but slow and pricey per-unit.",
     choices:[
-      { label:"Full tooling run — $35,000, +40 progress, risk", sub:"Ford the river. Cheap per-unit forever, if nothing changes.",
+      { label:"Full tooling run: $35,000, +40 progress, risk", sub:"Ford the river. Cheap per-unit forever, if nothing changes.",
         fx:s=>{ s.cash-=35000; s.stageProgress+=40;
-          if(Math.random()<0.25*PACKS[s.pack].defectRisk){ s.cash-=15000; return "The gamble stung — a design flaw surfaced after tooling. −$35,000 and another −$15,000 in rework."; }
+          if(Math.random()<0.25*PACKS[s.pack].defectRisk){ s.cash-=15000; return "The gamble stung: a design flaw surfaced after tooling. −$35,000 and another −$15,000 in rework."; }
           return "−$35,000. The molds are cut and they're beautiful. +40 progress."; } },
-      { label:"Pilot batch — $12,000, +15 progress", sub:"Take the ferry. Safe, slow, expensive per-unit.",
+      { label:"Pilot batch: $12,000, +15 progress", sub:"Take the ferry. Safe, slow, expensive per-unit.",
         fx:s=>{ s.cash-=12000; s.stageProgress+=15; return "−$12,000. A careful pilot run. +15 progress."; } },
-      { label:"Wait and shop more quotes — lose 2 weeks", sub:"Camp by the river. Maybe a better factory shows up.",
+      { label:"Wait and shop more quotes: lose 2 weeks", sub:"Camp by the river. Maybe a better factory shows up.",
         fx:s=>{ s.week+=2; s.cash-=s.burn*2; s.sanity-=4; if(Math.random()<0.5){ s.factoryRelation+=15; return "Two weeks lost, but you found a better factory. Relationship +15."; } return "Two weeks lost. The quotes came back the same."; } },
     ]},
   { id:"kickstarter", stage:2, kicker:"River Crossing", title:"Pre-sell or Prove It First?",
-    text:"You could launch the crowdfunding campaign now — the hype is warm — or wait until the design is fully locked. Pre-selling before you can manufacture is the classic hardware trap. It's also how everyone does it.",
+    text:"You could launch the crowdfunding campaign now, while the hype is warm, or wait until the design is fully locked. Pre-selling before you can manufacture is the classic hardware trap. It's also how everyone does it.",
     choices:[
-      { label:"Launch now — big pre-orders, delivery pressure", sub:"Strike while it's warm.",
+      { label:"Launch now: big pre-orders, delivery pressure", sub:"Strike while it's warm.",
         fx:s=>{ s.preorders+=400; s.traction=Math.min(100,s.traction+15); s.sanity-=6; s.stageProgress+=25; return "+400 pre-orders, +15 traction, +25 progress. The countdown clock is now your roommate."; } },
       { label:"Wait 3 weeks, lock the design first", sub:"Fewer pre-orders, calmer nights.",
         fx:s=>{ s.week+=3; s.cash-=s.burn*3; s.preorders+=180; s.traction=Math.min(100,s.traction+8); s.stageProgress+=25; s.morale+=5; return "Three weeks later: +180 pre-orders, +8 traction, +25 progress, +5 morale. Slower, saner."; } },
@@ -672,15 +672,15 @@ const DECISIONS = [
   { id:"overseas", stage:3, kicker:"River Crossing", title:"Where Do You Manufacture?",
     text:"Overseas is cheaper per unit but slower, with longer feedback loops and IP risk. Domestic is fast and safe and expensive.",
     choices:[
-      { label:"Overseas — cheaper units, more delay & IP risk", sub:"The classic route.",
+      { label:"Overseas: cheaper units, more delay & IP risk", sub:"The classic route.",
         fx:s=>{ s.burn-=300; s.factoryRelation-=5; return "Unit economics improve (−$300/wk burn), but the feedback loop just got 12 time zones longer."; } },
-      { label:"Domestic — +$400/wk burn, fast iteration", sub:"Pay for proximity.",
+      { label:"Domestic: +$400/wk burn, fast iteration", sub:"Pay for proximity.",
         fx:s=>{ s.burn+=400; s.stageProgress+=10; s.factoryRelation+=10; return "+$400/wk burn, +10 progress, factory +10. You can drive to your factory."; } },
     ]},
   { id:"retailPO", stage:4, kicker:"River Crossing", title:"The Big Retail Purchase Order",
-    text:"A national retailer offers a large PO. It's the shelf space you dreamed about — but you have to finance the inventory yourself, and they pay net-90.",
+    text:"A national retailer offers a large PO. It's the shelf space you dreamed about, but you have to finance the inventory yourself, and they pay net-90.",
     choices:[
-      { label:"Take the PO — $30,000 down, big payoff", sub:"Go big. Pray the sell-through holds.",
+      { label:"Take the PO: $30,000 down, big payoff", sub:"Go big. Pray the sell-through holds.",
         fx:s=>{ s.cash-=30000; s.traction=Math.min(100,s.traction+20); s.stageProgress+=35;
           const sold=800; s.unitsSold+=sold; const rev=sold*PACKS[s.pack].price*0.55; s.revenue+=rev; s.cash+=Math.floor(rev*0.5);
           return `−$30,000 to finance it. +20 traction, +35 progress, and $${Math.floor(rev*0.5).toLocaleString()} landing from early sell-through.`; } },
@@ -688,19 +688,19 @@ const DECISIONS = [
         fx:s=>{ s.stageProgress+=15; s.traction=Math.min(100,s.traction+6); return "+15 progress, +6 traction. The margins stay home."; } },
     ]},
   { id:"exclusive", stage:4, kicker:"River Crossing", title:"The Exclusive Distribution Deal",
-    text:"A big distributor offers an exclusive: guaranteed volume, national reach — and a fatter cut of every sale, with your brand riding shotgun in their catalog.",
+    text:"A big distributor offers an exclusive: guaranteed volume, national reach, and a fatter cut of every sale, with your brand riding shotgun in their catalog.",
     choices:[
-      { label:"Sign it — more volume, thinner margins", sub:"Guaranteed shelf space. Their terms.",
+      { label:"Sign it: more volume, thinner margins", sub:"Guaranteed shelf space. Their terms.",
         fx:s=>{ s.sellVolMult=1.6; s.channelCut=0.48; s.traction=Math.min(100,s.traction+10); s.stageProgress+=20; return "Signed. Sales volume +60%, but your cut per unit drops. +10 traction, +20 progress."; } },
       { label:"Stay independent", sub:"Your margins, your pace.",
         fx:s=>{ s.morale+=4; return "You keep the wheel. +4 morale."; } },
     ]},
   { id:"recall", stage:5, kicker:"River Crossing", title:"The Defect in the Field",
-    text:"A batch in customers' hands has a failure mode — rare, but real, and arguably a safety issue. Recall now, or patch quietly and hope?",
+    text:"A batch in customers' hands has a failure mode, rare but real, and arguably a safety issue. Recall now, or patch quietly and hope?",
     choices:[
-      { label:"Recall now — $25,000, reputation preserved", sub:"Eat it. Sleep at night.",
+      { label:"Recall now: $25,000, reputation preserved", sub:"Eat it. Sleep at night.",
         fx:s=>{ s.cash-=25000; s.morale+=5; s.traction=Math.min(100,s.traction+4); return "−$25,000. Customers notice you did the right thing. +5 morale, +4 traction."; } },
-      { label:"Quiet patch — free now… probably", sub:"Hope is a strategy, right?",
+      { label:"Quiet patch: free now… probably", sub:"Hope is a strategy, right?",
         fx:s=>{ if(Math.random()<0.45){ s.traction=Math.max(0,s.traction-25); s.cash-=40000; s.sanity-=12; return "It escalated. A teardown video found the flaw. −25 traction, −$40,000, −12 sanity."; }
           s.sanity-=5; return "It held. Nobody noticed. You check the support inbox every morning anyway. −5 sanity."; } },
     ]},
@@ -1175,12 +1175,14 @@ function nextModal() {
     b.innerHTML = c.label + (c.sub ? `<span class="sub">${c.sub}</span>` : "");
     b.onclick = () => {
       modalQueue.shift();
-      const result = c.fx ? c.fx(S) : null;
+      const result = S && c.fx ? c.fx(S) : null;
       if (result) log(result, "info");
-      renderAll(true);
-      save();
-      checkDeath();
-      if (!S.dead) nextModal();
+      if (S) {
+        renderAll(true);
+        save();
+        checkDeath();
+      }
+      if (!S || !S.dead) nextModal();
     };
     box.appendChild(b);
   });
@@ -1297,11 +1299,11 @@ function advanceWeek() {
     if (!firedDecisions.has(key) && S.investorHeat >= round.heatNeeded && S.stageIdx >= round.minStage) {
       firedDecisions.add(key);
       showModal("Trail Town", `${round.name}: Term Sheet on the Table`,
-        `Your fundraising groundwork paid off — ${fmt(round.amount)} for ${round.equityCost}% of the company. Resupply, or push on with what's in the pack?`,
+        `Your fundraising groundwork paid off: ${fmt(round.amount)} for ${round.equityCost}% of the company. Resupply, or push on with what's in the pack?`,
         [
-          { label: `Take it — +${fmt(round.amount)}, −${round.equityCost}% equity`, sub: "Resupply in town. The trail ahead is long.",
+          { label: `Take it: +${fmt(round.amount)}, −${round.equityCost}% equity`, sub: "Resupply in town. The trail ahead is long.",
             fx: s => { s.cash += round.amount; s.equity -= round.equityCost; s.roundsRaised++; s.investorHeat = 20; s.morale += 8; return `${round.name} closed: +${fmt(round.amount)} for ${round.equityCost}%.`; } },
-          { label: "Decline — keep the equity", sub: "Ultralight to the end.",
+          { label: "Decline: keep the equity", sub: "Ultralight to the end.",
             fx: s => { s.investorHeat = 35; s.sanity -= 3; return "You pass. The pack stays heavy but it's all yours."; } },
         ]);
     }
@@ -1311,11 +1313,11 @@ function advanceWeek() {
     firedDecisions.add("acquihire");
     const offer = 200000 + Math.round(S.traction * 3000);
     showModal("A Fork in the Trail", "The Acquihire Offer",
-      `A large company likes your team more than your product. They're offering ${fmt(offer)} plus jobs for everyone — if you shut down ${S.company} and join them. A safe exit off the mountain, halfway up.`,
+      `A large company likes your team more than your product. They're offering ${fmt(offer)} plus jobs for everyone, if you shut down ${S.company} and join them. A safe exit off the mountain, halfway up.`,
       [
-        { label: `Take it — ${fmt(offer)} and a warm office`, sub: "Get off the mountain. No shame in it.",
+        { label: `Take it: ${fmt(offer)} and a warm office`, sub: "Get off the mountain. No shame in it.",
           fx: s => { finishAcquihire(offer); return null; } },
-        { label: "Decline — we finish this hike", sub: "You didn't come this far to come this far.",
+        { label: "Decline: we finish this hike", sub: "You didn't come this far to come this far.",
           fx: s => { s.morale += 6; s.sanity -= 4; return "The team watches you send the 'thanks, but no' email. +6 morale, −4 sanity."; } },
       ]);
   }
@@ -1396,11 +1398,11 @@ function summitChoice() {
   renderAll(true);
   const valuation = Math.round((S.revenue * 4 + S.traction * 15000 + S.unitsSold * 40) / 1000) * 1000;
   showModal("The Summit", "Katahdin Is in Sight",
-    `${S.company} made it through the valley of death. An acquirer is on the phone with a real offer: ${fmt(valuation)}. Or you keep the company and run it for profit — smaller, slower, entirely yours.\n\nEither way: you made it. Almost nobody does.`,
+    `${S.company} made it through the valley of death. An acquirer is on the phone with a real offer: ${fmt(valuation)}. Or you keep the company and run it for profit: smaller, slower, entirely yours.\n\nEither way: you made it. Almost nobody does.`,
     [
-      { label: `Sell — ${fmt(valuation)} exit`, sub: "Sign the summit register. Take the photo.",
+      { label: `Sell: ${fmt(valuation)} exit`, sub: "Sign the summit register. Take the photo.",
         fx: () => { finishWin("exit", valuation); return null; } },
-      { label: "Keep it — run it for profit", sub: "The trail doesn't end. That's the point.",
+      { label: "Keep it: run it for profit", sub: "The trail doesn't end. That's the point.",
         fx: () => { finishWin("profit", valuation); return null; } },
     ]);
 }
@@ -1413,7 +1415,7 @@ function finishWin(type, valuation) {
     $("endTitle").textContent = "Katahdin.";
     $("endSub").textContent = `${S.company} made it. You took the call, signed the papers, and stood on the summit.`;
     endJournal([["Exit valuation", fmt(valuation)], ["Your share", fmt(founderTake)]]);
-    $("endEpitaph").textContent = `“The trail provides.” — every hardware founder who survived, eventually`;
+    $("endEpitaph").textContent = `“The trail provides.” So says every hardware founder who survived, eventually.`;
   } else {
     const profit = Math.round(S.revenue * 0.18 / 1000) * 1000;
     $("endTitle").textContent = "Thru-Hiker.";
@@ -1428,7 +1430,7 @@ function finishAcquihire(offer) {
   showEnd();
   const take = Math.round(offer * S.equity / 100);
   $("endTitle").textContent = "Off the Mountain.";
-  $("endSub").textContent = `${S.company} winds down; the team lands safe at a big company. Not the summit — but everyone walks off the trail together.`;
+  $("endSub").textContent = `${S.company} winds down; the team lands safe at a big company. Not the summit, but everyone walks off the trail together.`;
   endJournal([["Acquihire offer", fmt(offer)], ["Your share", fmt(take)]]);
   $("endEpitaph").textContent = `“We didn't finish the hike. We did get everyone home.”`;
 }
@@ -1447,7 +1449,7 @@ function loseGame(cause) {
     timeout:[`The market window closed`, `“The product was good. It was also two years late, and the shelf we wanted was full.”`],
   };
   const [sub, epitaph] = causes[cause] || causes.cash;
-  $("endSub").textContent = sub + ` — week ${S.week}, at the ${STAGES[S.stageIdx].label} stage.`;
+  $("endSub").textContent = sub + `, week ${S.week}, at the ${STAGES[S.stageIdx].label} stage.`;
   endJournal([["Cause of death", { cash: "Runway → $0", sanity: "Founder burnout", morale: "Team collapse", timeout: "Missed the window" }[cause]]]);
   $("endEpitaph").textContent = epitaph;
 }
@@ -1456,8 +1458,8 @@ function loseGame(cause) {
 
 function showHelp() {
   showModal("Field Guide", "How to Play",
-    `Each turn is one week. You have 60 founder-hours — split them across Build, Sell, Fundraise, Factory, and Rest, then advance the week.\n\nBUILD moves the current stage forward. SELL earns pre-orders (crowdfunding) or converts inventory to cash (retail onward). FUNDRAISE builds investor heat until a term sheet appears. FACTORY improves your production yield. REST is a zero day — it's how sanity and morale survive (rest 25+ hrs and you'll make camp).\n\nYou lose if cash, sanity, or morale hits zero — or if you're still on the trail at week ${MAX_WEEKS}. Reach retail before week ${SEASON_DEADLINE} or the season punishes you. Reach the summit and decide how the story ends.`,
-    [{ label: "Got it — let's begin", sub: null, fx: null }]);
+    `Each turn is one week. You have 60 founder-hours: split them across Build, Sell, Fundraise, Factory, and Rest, then advance the week.\n\nBUILD moves the current stage forward. SELL earns pre-orders (crowdfunding) or converts inventory to cash (retail onward). FUNDRAISE builds investor heat until a term sheet appears. FACTORY improves your production yield. REST is a zero day: it's how sanity and morale survive (rest 25+ hrs and you'll make camp).\n\nYou lose if cash, sanity, or morale hits zero, or if you're still on the trail at week ${MAX_WEEKS}. Reach retail before week ${SEASON_DEADLINE} or the season punishes you. Reach the summit and decide how the story ends.`,
+    [{ label: "Got it, let's begin", sub: null, fx: null }]);
 }
 
 /* ================= BOOT ================= */
