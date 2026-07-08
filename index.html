@@ -1457,7 +1457,7 @@ function loseGame(cause) {
 function showHelp() {
   showModal("Field Guide", "How to Play",
     `Each turn is one week. You have 60 founder-hours — split them across Build, Sell, Fundraise, Factory, and Rest, then advance the week.\n\nBUILD moves the current stage forward. SELL earns pre-orders (crowdfunding) or converts inventory to cash (retail onward). FUNDRAISE builds investor heat until a term sheet appears. FACTORY improves your production yield. REST is a zero day — it's how sanity and morale survive (rest 25+ hrs and you'll make camp).\n\nYou lose if cash, sanity, or morale hits zero — or if you're still on the trail at week ${MAX_WEEKS}. Reach retail before week ${SEASON_DEADLINE} or the season punishes you. Reach the summit and decide how the story ends.`,
-    [{ label: "Got it — back to the trail", sub: null, fx: null }]);
+    [{ label: "Got it — let's begin", sub: null, fx: null }]);
 }
 
 /* ================= BOOT ================= */
@@ -1490,7 +1490,6 @@ function startGame(state, fired, rv, resumed) {
   renderAll(false);
   scene.drawOnce();
   save();
-  if (!resumed) showHelp();
 }
 
 $("startBtn").onclick = () => {
@@ -1506,6 +1505,8 @@ if (existing) {
 
 $("advanceBtn").onclick = advanceWeek;
 $("helpBtn").onclick = showHelp;
+
+showHelp();
 
 document.addEventListener("keydown", e => {
   if (e.key === "Enter" && S && !S.dead
